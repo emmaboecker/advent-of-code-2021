@@ -5,5 +5,5 @@ fun main() {
 
     val numbers = input.split("\\s+".toRegex()).mapTo(ArrayList()) { it.toInt() }
 
-    println(numbers.windowed(2).count { it[0] < it[1] })
+    println(numbers.zipWithNext().count { (a, b) -> b > a })
 }

@@ -7,7 +7,7 @@ fun main() {
 
     val increasing = numbers.windowed(3).mapTo(ArrayList()) {
         it[0] + it[1] + it[2]
-    }.windowed(2).count { it[0] < it[1] }
+    }.zipWithNext().count { (a, b) -> b > a }
 
     println(increasing)
 }
