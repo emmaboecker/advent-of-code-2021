@@ -3,7 +3,7 @@ package net.stckoverflw.adventofcode.day1
 fun main() {
     val input = {}.javaClass.getResource("/input.txt")?.readText() ?: error("No input.txt in resources")
 
-    val numbers = input.split("\\s+".toRegex()).mapTo(ArrayList()) { it.toInt() }
+    val numbers = input.lines().map { it.toInt() }
 
     println(numbers.zipWithNext().count { (a, b) -> b > a })
 }
