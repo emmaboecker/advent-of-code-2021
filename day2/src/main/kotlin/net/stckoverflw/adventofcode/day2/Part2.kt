@@ -9,17 +9,11 @@ fun main() {
 
     input.split("(\\r\\n|\\r|\\n)".toRegex()).forEach {
         val (instructionName, value) = it.split(' ')
-        when (instructionName.lowercase()) {
-            "forward" -> {
-                horizontal += value.toInt()
-                depth += (aim * value.toInt())
-            }
-            "up" -> {
-                aim -= value.toInt()
-            }
-            "down" -> {
-                aim += value.toInt()
-            }
+        if (instructionName.equals("forward", true)) {
+            horizontal += value.toInt()
+            depth += aim * value.toInt()
+        } else {
+            aim += if (instructionName.equals("down", true)) value.toInt() else -value.toInt()
         }
     }
 

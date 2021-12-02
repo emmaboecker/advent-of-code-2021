@@ -8,16 +8,10 @@ fun main() {
 
     input.split("(\\r\\n|\\r|\\n)".toRegex()).forEach {
         val (instructionName, value) = it.split(' ')
-        when (instructionName.lowercase()) {
-            "forward" -> {
-                horizontal += value.toInt()
-            }
-            "up" -> {
-                depth -= value.toInt()
-            }
-            "down" -> {
-                depth += value.toInt()
-            }
+        if (instructionName.equals("forward", true)) {
+            horizontal += value.toInt()
+        } else {
+            depth += if (instructionName.equals("down", true)) value.toInt() else -value.toInt()
         }
     }
 
